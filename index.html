@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DIY 聖誕樹 教學簡報</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#0b241a;overflow:hidden;font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei','Heiti TC',sans-serif}
+#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;overflow:hidden;background:#123B2A}
+.sl{position:absolute;inset:0;padding:128px;display:none;flex-direction:column;justify-content:center;gap:48px;opacity:0}
+.sl.on{display:flex;animation:in .35s ease forwards}
+@keyframes in{from{opacity:0}to{opacity:1}}
+.light{background:#F7F1E5;color:#123B2A}
+.dark{background:#123B2A;color:#F7F1E5}
+.step{flex-direction:row;align-items:center;gap:96px}
+.txt{flex:1;display:flex;flex-direction:column;gap:32px}
+.sl h1{font-size:128px;line-height:1.1;margin:0;font-weight:800}
+.sl h2{font-size:72px;line-height:1.2;margin:0;font-weight:800}
+.sl h3{font-size:40px;line-height:1.25;margin:0;font-weight:700}
+.eyebrow{font-size:32px;font-weight:700;letter-spacing:.12em;color:#B93A2E;margin:0}
+.dark .eyebrow{color:#E9B949}
+.badge{align-self:flex-start;background:#B93A2E;color:#F7F1E5;padding:8px 32px;border-radius:999px;font-size:32px;font-weight:700;margin:0}
+.dark .badge{background:#E9B949;color:#123B2A}
+.lead{font-size:40px;line-height:1.5;margin:0;color:#46564D}
+.dark .lead{color:#D8E3DA}
+.tip{background:#EADFC8;color:#123B2A;border-left:8px solid #B93A2E;padding:24px 32px;font-size:32px;line-height:1.5;margin:0;border-radius:0 12px 12px 0}
+.shot{object-fit:cover;border-radius:20px;box-shadow:0 12px 32px rgba(18,59,42,.25);display:block}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.card{background:#EADFC8;color:#123B2A;border-radius:20px;padding:28px 32px;display:flex;flex-direction:column;gap:8px}
+.card .n{font-size:32px;font-weight:800;color:#B93A2E;margin:0}
+.card .d{font-size:32px;line-height:1.4;margin:0;color:#46564D}
+.row2{display:flex;flex-direction:row;gap:64px}
+.cap{display:flex;flex-direction:column;gap:16px}
+.cover-photo{position:absolute;right:0;top:0;width:880px;height:1080px;object-fit:cover}
+.w1000{width:1000px;height:562px}.p464{width:464px;height:824px}.w800{width:800px;height:450px}
+.vid{position:relative;width:1000px;height:562px}
+.vid video{width:1000px;height:562px;border-radius:20px;box-shadow:0 12px 32px rgba(18,59,42,.25);background:#000;object-fit:cover;display:block}
+/* controls */
+#bar{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);display:flex;gap:8px;align-items:center;background:rgba(0,0,0,.55);color:#fff;padding:6px 10px;border-radius:999px;font:500 15px/1 system-ui,'Microsoft JhengHei',sans-serif;opacity:0;transition:opacity .25s;z-index:10}
+body.ui #bar{opacity:1}
+#bar button{all:unset;cursor:pointer;padding:8px 14px;border-radius:999px}
+#bar button:hover{background:rgba(255,255,255,.2)}
+#bar span{min-width:64px;text-align:center}
+#prog{position:fixed;left:0;top:0;height:4px;background:#E9B949;z-index:10;transition:width .25s}
+#notes{position:fixed;left:0;right:0;bottom:0;max-height:34vh;overflow:auto;background:rgba(10,20,15,.93);color:#F7F1E5;padding:20px 32px 64px;font-size:22px;line-height:1.6;display:none;z-index:9}
+body.shownotes #notes{display:block}
+#help{position:fixed;right:14px;top:12px;color:#fff;background:rgba(0,0,0,.55);padding:8px 14px;border-radius:12px;font:14px/1.5 system-ui,'Microsoft JhengHei',sans-serif;opacity:0;transition:opacity .25s;z-index:10;pointer-events:none}
+body.ui #help{opacity:.9}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div id="stage">
+
+<section class="sl dark" data-notes="大家好,歡迎來到今天的聖誕手作。今天我們會用油土、紙卡和牙籤,完成一棵可以放在桌上的小聖誕樹。整個流程分成八個步驟,跟著我慢慢做就可以了。">
+<img class="cover-photo" src="assets/cover.jpg" alt="四棵完成的油土聖誕樹,站在 HBC 底座上">
+<div class="txt" style="width:800px;flex:none">
+<p class="eyebrow">HBC 聖誕手作活動</p>
+<h1>DIY 聖誕樹</h1>
+<p class="lead">油土手作教學,一步一步完成屬於你的聖誕樹</p>
+</div>
+</section>
+
+<section class="sl light step" data-notes="先看看成品:這就是我們今天要完成的作品。每個人的圓珠位置都不一樣,可以自由發揮。">
+<div class="txt">
+<p class="eyebrow">今天的目標</p>
+<h2>完成一棵站在 HBC 底座上的聖誕樹</h2>
+<p class="lead">綠色葉片一層一層疊起來,再點綴彩色小圓珠,頂端戴上黃色星星。</p>
+</div>
+<img class="shot p464" src="assets/final-front.jpg" alt="完成的聖誕樹,正面">
+<img class="shot p464" src="assets/final-single.jpg" alt="完成的聖誕樹,頂端有粉紅色圓珠">
+</section>
+
+<section class="sl light" data-notes="請大家先確認桌上的材料都有了。如果缺什麼,現在舉手告訴我們。">
+<div><p class="eyebrow">開始之前</p><h2>材料與工具</h2></div>
+<div class="grid3">
+<div class="card"><h3>紙卡</h3><p class="d">印好扇形圖樣</p></div>
+<div class="card"><h3>剪刀</h3><p class="d">沿黑線剪下</p></div>
+<div class="card"><h3>膠帶</h3><p class="d">黏合圓錐</p></div>
+<div class="card"><h3>牙籤</h3><p class="d">當作樹幹</p></div>
+<div class="card"><h3>咖啡色油土</h3><p class="d">固定牙籤在底座</p></div>
+<div class="card"><h3>綠色油土</h3><p class="d">捏成一片片葉子</p></div>
+<div class="card"><h3>黃色輕粘土</h3><p class="d">捏出頂端星星</p></div>
+<div class="card"><h3>彩色小圓珠</h3><p class="d">裝飾樹身</p></div>
+<div class="card"><h3>HBC 底座</h3><p class="d">3D 列印底座</p></div>
+</div>
+</section>
+
+<section class="sl dark" data-notes="整個流程前四步做樹身,後四步做葉子,最後把葉子貼上去、加上裝飾。">
+<div><p class="eyebrow">製作流程</p><h2>八個步驟,再加上組裝裝飾</h2></div>
+<div class="grid3">
+<div class="card"><p class="n">步驟 1</p><h3>剪下扇形</h3></div>
+<div class="card"><p class="n">步驟 2</p><h3>捲成圓錐</h3></div>
+<div class="card"><p class="n">步驟 3</p><h3>膠帶黏好</h3></div>
+<div class="card"><p class="n">步驟 4</p><h3>填入底座</h3></div>
+<div class="card"><p class="n">步驟 5</p><h3>搓成長條</h3></div>
+<div class="card"><p class="n">步驟 6</p><h3>切割均等</h3></div>
+<div class="card"><p class="n">步驟 7</p><h3>搓成橢圓</h3></div>
+<div class="card"><p class="n">步驟 8</p><h3>壓出葉子</h3></div>
+<div class="card"><p class="n">最後</p><h3>組裝與裝飾</h3></div>
+</div>
+</section>
+
+<section class="sl light step" data-notes="第一步,請拿出紙卡,沿著黑線把扇形剪下來。剪的時候慢一點,邊緣盡量順。">
+<div class="txt"><p class="badge">步驟 1</p><h2>剪下扇形</h2><p class="lead">沿著黑線,把圖形剪下來。</p><p class="tip">剪好的扇形,下一步會捲成圓錐。</p></div>
+<img class="shot w1000" src="assets/step1.jpg" alt="紙卡上印有扇形圖樣,沿黑線剪下">
+</section>
+
+<section class="sl light step" data-notes="把扇形捲成圓錐。注意最尖的地方一定要留一個小洞,等一下牙籤要從這裡穿過。">
+<div class="txt"><p class="badge">步驟 2</p><h2>捲成圓錐狀</h2><p class="lead">把扇形捲起來,做成一個圓錐。</p><p class="tip">頂尖要留一個牙籤洞,不要捲到完全封死。</p></div>
+<img class="shot p464" src="assets/step2.jpg" alt="雙手把扇形紙卡捲成圓錐">
+</section>
+
+<section class="sl light step" data-notes="確定圓錐的大小之後,用膠帶沿著接縫貼好。再檢查一次,頂點的小洞還在不在。">
+<div class="txt"><p class="badge">步驟 3</p><h2>調整大小,用膠帶黏好</h2><p class="lead">調整到合適的大小後,用膠帶把圓錐黏牢。</p><p class="tip">頂點預留一個小洞,給牙籤穿過。</p></div>
+<img class="shot p464" src="assets/step3.jpg" alt="用膠帶黏好的圓錐,頂點留有小洞">
+</section>
+
+<section class="sl light step" data-notes="咖啡色油土一定要先揉軟,才好塞進底座。塞滿之後,把牙籤直直插在中間。">
+<div class="txt"><p class="badge">步驟 4</p><h2>咖啡色油土塞進底座</h2><p class="lead">先把咖啡色油土揉軟,再塞進底座。</p><p class="tip">支架是聖誕樹的樹幹。</p></div>
+<img class="shot p464" src="assets/step4.jpg" alt="底座中塞入咖啡色油土並插上支架">
+</section>
+
+<section class="sl dark step" data-notes="接下來要做葉子。先把綠色油土搓成長條,長度大約像照片裡這樣,粗細要均勻。">
+<div class="txt"><p class="badge">步驟 5</p><h2>搓成長條狀</h2><p class="lead">把綠色油土搓成一條長長的圓條。</p><p class="tip">粗細盡量均勻,下一步才好切成一樣大。</p></div>
+<img class="shot w1000" src="assets/step5.jpg" alt="手旁邊放著搓成長條的綠色油土">
+</section>
+
+<section class="sl dark step" data-notes="用手或工具把長條切成小塊,盡量切得一樣大。一棵樹需要很多片葉子,可以一次多切一些。">
+<div class="txt"><p class="badge">步驟 6</p><h2>大小切割至均等</h2><p class="lead">把長條切成一小塊一小塊。</p><p class="tip">每一塊大小一樣,葉子才會整齊好看。</p></div>
+<img class="shot w1000" src="assets/step6.jpg" alt="長條油土旁邊切好的六小塊綠色油土">
+</section>
+
+<section class="sl dark" data-notes="每一小塊先搓成約一公分的圓球,再輕輕搓長,變成橢圓形。每顆大小盡量一致。">
+<div style="display:flex;flex-direction:row;align-items:center;gap:32px"><p class="badge">步驟 7</p><h2>先搓圓球,再搓成橢圓</h2></div>
+<div class="row2">
+<div class="cap"><img class="shot w800" src="assets/step7-ball.jpg" alt="一顆搓好的綠色圓球,旁邊的尺顯示約一公分"><h3>① 搓成圓球,約一公分</h3></div>
+<div class="cap"><img class="shot w800" src="assets/step7-oval.jpg" alt="六顆搓成橢圓形的綠色油土"><h3>② 每顆搓揉至橢圓狀</h3></div>
+</div>
+</section>
+
+<section class="sl dark step" data-video="1" data-notes="這是最關鍵的一步。播放影片給大家看:把橢圓油土放在紙上,手指壓住往前推,一端圓、一端尖,就是一片葉子。可以讓大家現場練習一兩片再繼續。">
+<div class="txt"><p class="badge">步驟 8</p><h2>葉子示範</h2><p class="lead">橢圓油土放在紙上,用手指往前壓平,推出葉尖。</p><p class="tip">請看影片示範,一片一片慢慢做。</p></div>
+<div class="vid"><video id="leafvid" src="assets/step8.mp4" poster="assets/step8-poster.jpg" muted loop playsinline controls preload="auto"></video></div>
+</section>
+
+<section class="sl light step" data-notes="這就是葉子的成品。請大家照這個樣子,一次做出足夠貼滿一棵樹的葉子數量。">
+<div class="txt"><p class="badge">步驟 8</p><h2>葉子成品</h2><p class="lead">一端圓潤、一端微尖,中間略微凹下。</p><p class="tip">一棵樹需要很多片葉子,一次多做一些。</p></div>
+<img class="shot w1000" src="assets/step8-leaf.jpg" alt="做好的綠色油土葉子成品">
+</section>
+
+<section class="sl dark" data-notes="葉子從最下面一圈開始貼,每一層蓋住上一層的邊緣,慢慢往上。貼完再加彩色圓珠,最後把黃色星星放在頂端。">
+<div><p class="eyebrow">最後一步</p><h2>組裝與裝飾</h2></div>
+<div class="grid3">
+<div class="card"><p class="n">① 貼葉子</p><h3>由下往上</h3><p class="d">葉尖朝下,一層一層交疊貼在圓錐上。</p></div>
+<div class="card"><p class="n">② 點綴</p><h3>彩色小圓珠</h3><p class="d">把圓珠壓在葉子之間,位置自由發揮。</p></div>
+<div class="card"><p class="n">③ 頂端</p><h3>黃色星星</h3><p class="d">用黃色土捏出星星,放在樹頂。</p></div>
+</div>
+</section>
+
+<section class="sl dark step" data-notes="大家都完成了!請把作品帶回家,也可以和身邊的人互相欣賞。謝謝大家,聖誕快樂!">
+<div class="txt"><p class="eyebrow">完成!</p><h2>聖誕快樂</h2><p class="lead">把你的聖誕樹放在桌上,拍張照片和大家分享吧。</p></div>
+<img class="shot w1000" src="assets/final-group.jpg" alt="四棵完成的聖誕樹並排在桌上">
+</section>
+
+</div>
+
+<div id="notes"></div>
+<div id="help">← → 換頁 ・ F 全螢幕 ・ N 講稿 ・ 空白鍵 下一頁</div>
+<div id="bar">
+<button id="bprev" title="上一頁">◀</button><span id="cnt"></span><button id="bnext" title="下一頁">▶</button>
+<button id="bnotes" title="講稿 (N)">講稿</button><button id="bfs" title="全螢幕 (F)">全螢幕</button>
+</div>
+
+<script>
+(function(){
+  var stage=document.getElementById('stage'),slides=[].slice.call(stage.children),n=slides.length,cur=0;
+  var vid=document.getElementById('leafvid'),cnt=document.getElementById('cnt'),prog=document.getElementById('prog'),notes=document.getElementById('notes');
+  function fit(){
+    var s=Math.min(innerWidth/1920,innerHeight/1080);
+    stage.style.transform='scale('+s+')';
+    stage.style.left=((innerWidth-1920*s)/2)+'px';
+    stage.style.top=((innerHeight-1080*s)/2)+'px';
+  }
+  function show(i,push){
+    i=Math.max(0,Math.min(n-1,i));
+    slides.forEach(function(s,k){s.classList.toggle('on',k===i)});
+    cur=i;
+    cnt.textContent=(i+1)+' / '+n;
+    prog.style.width=((i+1)/n*100)+'%';
+    notes.textContent=slides[i].getAttribute('data-notes')||'';
+    if(slides[i].getAttribute('data-video')){var p=vid.play();if(p&&p.catch)p.catch(function(){});}
+    else{vid.pause();try{vid.currentTime=0}catch(e){}}
+    if(push!==false)history.replaceState(null,'','#'+(i+1));
+  }
+  function next(){show(cur+1)} function prev(){show(cur-1)}
+  function fs(){var d=document;if(d.fullscreenElement||d.webkitFullscreenElement){(d.exitFullscreen||d.webkitExitFullscreen).call(d)}else{var e=d.documentElement;(e.requestFullscreen||e.webkitRequestFullscreen).call(e)}}
+  document.addEventListener('keydown',function(e){
+    var k=e.key;
+    if(k==='ArrowRight'||k==='PageDown'||k===' '||k==='Enter'||k==='ArrowDown'){e.preventDefault();next()}
+    else if(k==='ArrowLeft'||k==='PageUp'||k==='Backspace'||k==='ArrowUp'){e.preventDefault();prev()}
+    else if(k==='Home')show(0); else if(k==='End')show(n-1);
+    else if(k==='f'||k==='F')fs();
+    else if(k==='n'||k==='N')document.body.classList.toggle('shownotes');
+  });
+  stage.addEventListener('click',function(e){
+    if(e.target.closest('video'))return;
+    (e.clientX<innerWidth*0.2)?prev():next();
+  });
+  document.getElementById('bprev').onclick=prev;document.getElementById('bnext').onclick=next;
+  document.getElementById('bfs').onclick=fs;
+  document.getElementById('bnotes').onclick=function(){document.body.classList.toggle('shownotes')};
+  var x0=null;
+  document.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  document.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>50){dx<0?next():prev()}},{passive:true});
+  var t;function wake(){document.body.classList.add('ui');clearTimeout(t);t=setTimeout(function(){document.body.classList.remove('ui')},2500)}
+  document.addEventListener('mousemove',wake);document.addEventListener('touchstart',wake,{passive:true});wake();
+  addEventListener('resize',fit);addEventListener('hashchange',function(){var h=parseInt(location.hash.slice(1),10);if(h)show(h-1,false)});
+  fit();var h=parseInt(location.hash.slice(1),10);show(h?h-1:0,false);
+})();
+</script>
+</body>
+</html>
